@@ -4,7 +4,7 @@
 #
 Name     : dri3proto
 Version  : 1.0
-Release  : 3
+Release  : 4
 URL      : http://xorg.freedesktop.org/releases/individual/proto/dri3proto-1.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/dri3proto-1.0.tar.gz
 Summary  : DRI3 extension headers
