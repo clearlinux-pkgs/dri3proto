@@ -4,7 +4,7 @@
 #
 Name     : dri3proto
 Version  : 1.0
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/proto/dri3proto-1.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/dri3proto-1.0.tar.gz
 Summary  : DRI3 extension headers
@@ -19,6 +19,7 @@ No detailed description available
 %package dev
 Summary: dev components for the dri3proto package.
 Group: Development
+Provides: dri3proto-devel
 
 %description dev
 dev components for the dri3proto package.
@@ -36,10 +37,15 @@ doc components for the dri3proto package.
 %setup -q -n dri3proto-1.0
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -52,7 +58,7 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/X11/extensions/dri3proto.h
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/dri3proto.pc
 
 %files doc
 %defattr(-,root,root,-)
